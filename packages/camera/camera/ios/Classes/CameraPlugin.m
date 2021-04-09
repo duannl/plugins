@@ -449,6 +449,10 @@ NSString *const errorMethod = @"error";
     }
   }
 
+  if([_captureDevice position] == AVCaptureDevicePositionFront && connection.supportsVideoMirroring) {
+    connection.videoMirrored = YES;
+  }
+
   [_capturePhotoOutput capturePhotoWithSettings:settings
                                        delegate:[[FLTSavePhotoDelegate alloc] initWithPath:path
                                                                                     result:result]];
